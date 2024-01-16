@@ -155,9 +155,8 @@ class _MarkdownTextInputState extends State<MarkdownTextInput> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).dividerColor,
-        border: Border.all(
-            color: Theme.of(context).colorScheme.secondary, width: 2),
+        color: Theme.of(context).cardColor,
+        border: Border.all(color: Theme.of(context).dividerColor, width: 2),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
@@ -176,11 +175,11 @@ class _MarkdownTextInputState extends State<MarkdownTextInput> {
             textDirection: widget.textDirection,
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.secondary)),
+                  borderSide:
+                      BorderSide(color: Theme.of(context).dividerColor)),
               focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.secondary)),
+                  borderSide:
+                      BorderSide(color: Theme.of(context).dividerColor)),
               hintText: widget.label,
               hintStyle:
                   const TextStyle(color: Color.fromRGBO(63, 61, 86, 0.5)),
