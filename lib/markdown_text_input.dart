@@ -65,6 +65,9 @@ class MarkdownTextInput extends StatefulWidget {
   /// Custom text for submit button in dialogs
   final String? customSubmitDialogText;
 
+  ///Editor TextformField ontapOutSide
+  final void Function(PointerDownEvent)? onTapOutside;
+
   /// Constructor for [MarkdownTextInput]
   MarkdownTextInput(this.onTextChanged, this.initialValue,
       {this.label = '',
@@ -89,7 +92,8 @@ class MarkdownTextInput extends StatefulWidget {
       this.imageDialogTextDecoration,
       this.customCancelDialogText,
       this.customSubmitDialogText,
-      this.optionnalActionButtons = const []});
+      this.optionnalActionButtons = const [],
+      this.onTapOutside});
 
   @override
   _MarkdownTextInputState createState() =>
@@ -156,7 +160,7 @@ class _MarkdownTextInputState extends State<MarkdownTextInput> {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
-        border: Border.all(color: Theme.of(context).dividerColor, width: 2),
+        border: Border.all(color: Theme.of(context).dividerColor, width: 1),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
@@ -167,6 +171,8 @@ class _MarkdownTextInputState extends State<MarkdownTextInput> {
             maxLines: widget.maxLines,
             controller: _controller,
             textCapitalization: TextCapitalization.sentences,
+            autofocus: true,
+            onTapOutside: widget.onTapOutside,
             validator: widget.validators != null
                 ? (value) => widget.validators!(value)
                 : null,
