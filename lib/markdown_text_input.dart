@@ -179,6 +179,7 @@ class _MarkdownTextInputState extends State<MarkdownTextInput> {
             style: widget.textStyle ?? Theme.of(context).textTheme.bodyLarge,
             cursorColor: Theme.of(context).primaryColor,
             textDirection: widget.textDirection,
+            enableInteractiveSelection: false,
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
                   borderSide:
