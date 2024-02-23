@@ -183,6 +183,14 @@ class _MarkdownTextInputState extends State<MarkdownTextInput> {
             cursorColor: Theme.of(context).primaryColor,
             textDirection: widget.textDirection,
             enableInteractiveSelection: widget.enableInteractiveSelection,
+            contextMenuBuilder: (context, editableTextState) {
+              var buttonItems = editableTextState.contextMenuButtonItems;
+              buttonItems.removeWhere(
+                  (element) => element.type == ContextMenuButtonType.paste);
+              return AdaptiveTextSelectionToolbar.buttonItems(
+                  buttonItems: buttonItems,
+                  anchors: editableTextState.contextMenuAnchors);
+            },
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
                   borderSide:
