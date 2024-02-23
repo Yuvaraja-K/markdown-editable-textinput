@@ -68,6 +68,8 @@ class MarkdownTextInput extends StatefulWidget {
   ///Editor TextformField ontapOutSide
   final void Function(PointerDownEvent)? onTapOutside;
 
+  final bool enableInteractiveSelection;
+
   /// Constructor for [MarkdownTextInput]
   MarkdownTextInput(this.onTextChanged, this.initialValue,
       {this.label = '',
@@ -93,7 +95,8 @@ class MarkdownTextInput extends StatefulWidget {
       this.customCancelDialogText,
       this.customSubmitDialogText,
       this.optionnalActionButtons = const [],
-      this.onTapOutside});
+      this.onTapOutside,
+      this.enableInteractiveSelection = true});
 
   @override
   _MarkdownTextInputState createState() =>
@@ -179,7 +182,7 @@ class _MarkdownTextInputState extends State<MarkdownTextInput> {
             style: widget.textStyle ?? Theme.of(context).textTheme.bodyLarge,
             cursorColor: Theme.of(context).primaryColor,
             textDirection: widget.textDirection,
-            enableInteractiveSelection: false,
+            enableInteractiveSelection: widget.enableInteractiveSelection,
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
                   borderSide:
