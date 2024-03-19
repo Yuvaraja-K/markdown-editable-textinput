@@ -69,6 +69,7 @@ class MarkdownTextInput extends StatefulWidget {
   final void Function(PointerDownEvent)? onTapOutside;
 
   final bool enableInteractiveSelection;
+  final bool autoFocus;
 
   /// Constructor for [MarkdownTextInput]
   MarkdownTextInput(this.onTextChanged, this.initialValue,
@@ -96,6 +97,7 @@ class MarkdownTextInput extends StatefulWidget {
       this.customSubmitDialogText,
       this.optionnalActionButtons = const [],
       this.onTapOutside,
+      this.autoFocus = true,
       this.enableInteractiveSelection = true});
 
   @override
@@ -174,7 +176,7 @@ class _MarkdownTextInputState extends State<MarkdownTextInput> {
             maxLines: widget.maxLines,
             controller: _controller,
             textCapitalization: TextCapitalization.sentences,
-            autofocus: true,
+            autofocus: widget.autoFocus,
             onTapOutside: widget.onTapOutside,
             validator: widget.validators != null
                 ? (value) => widget.validators!(value)
